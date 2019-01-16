@@ -56,10 +56,15 @@ class CMakeBuild(build_ext):
 setup(
     name='microsoft.seal',
     version='3.1.0',
-    author='Olli Saarikivi',
-    author_email='olsaarik@microsoft.com',
-    description='A Python wrapper for the Microsoft SEAL homomorphic encryption library',
     packages=['microsoft.seal'],
     ext_modules=[CMakeExtension('microsoft.seal._seal')],
     cmdclass=dict(build_ext=CMakeBuild),
+    author='Olli Saarikivi',
+    author_email='olsaarik@microsoft.com',
+    description='Python wrapper for the Simple Encrypted Arithmetic Library (SEAL)',
+    license='MIT',
+    url="http://sealcrypto.org",
+    project_urls={
+        "Source Code": "https://github.com/Microsoft/SEAL",
+    }
 )
