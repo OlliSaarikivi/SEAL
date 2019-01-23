@@ -96,8 +96,10 @@ PYBIND11_MODULE(_seal, m) {
     .def(py::init<const std::string&>())
     .def(py::init<const std::string&, MemoryPoolHandle>())
     .def(py::pickle(&serialize<Plaintext>, &deserialize<Plaintext>))
-    .def_property_readonly("is_ntt_form", (bool& (Plaintext::*)()) &Plaintext::is_ntt_form,
+    .def_property_readonly("is_ntt_form", [](Plaintext &p) { return p.is_ntt_form(); },
         "Whether the plaintext is in NTT form")
+    .def_property_readonly("is_zero", [](Plaintext &p) { return p.is_zero(); },
+        "Returns whether the current plaintext polynomial has all zero coefficients.")
     .def_property_readonly("parms_id", (parms_id_type& (Plaintext::*)()) &Plaintext::parms_id,
         "The parms_id")
     .def_property("scale", (double& (Plaintext::*)()) &Plaintext::scale,
@@ -134,7 +136,7 @@ PYBIND11_MODULE(_seal, m) {
     .def_property_readonly("size", &Ciphertext::size,
         "The size of the ciphertext")
     .def(py::pickle(&serialize<Ciphertext>, &deserialize<Ciphertext>))
-    .def_property_readonly("is_ntt_form", (bool& (Ciphertext::*)()) &Ciphertext::is_ntt_form,
+    .def_property_readonly("is_ntt_form", [](Ciphertext &c) { return c.is_ntt_form(); },
         "Whether the ciphertext is in NTT form")
     .def_property_readonly("parms_id", (parms_id_type& (Ciphertext::*)()) &Ciphertext::parms_id,
         "The parms_id")
