@@ -23,6 +23,9 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message(STATUS "Build type (CMAKE_BUILD_TYPE): ${CMAKE_BUILD_TYPE}")
 
+# Use position independent code
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 # In Debug mode enable also SEAL_DEBUG by default
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 	set(SEAL_DEBUG_DEFAULT ON)
