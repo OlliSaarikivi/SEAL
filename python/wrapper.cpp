@@ -59,7 +59,7 @@ PYBIND11_MODULE(_seal, m) {
         py::arg("value") = 0)
     .def_property_readonly("value", (std::uint64_t (SmallModulus::*)()) &SmallModulus::value, "The value of the current SmallModulus");
     
-  m.def("coeff_modulus_192", &coeff_modulus_256, "Returns the default coefficients modulus for a given polynomial modulus degree.");
+  m.def("coeff_modulus_256", &coeff_modulus_256, "Returns the default coefficients modulus for a given polynomial modulus degree.");
   m.def("coeff_modulus_192", &coeff_modulus_192, "Returns the default coefficients modulus for a given polynomial modulus degree.");
   m.def("coeff_modulus_128", &coeff_modulus_128, "Returns the default coefficients modulus for a given polynomial modulus degree.");
   m.def("small_mods_60bit", &small_mods_60bit, "Returns a 60-bit coefficient modulus prime.");
